@@ -1,5 +1,11 @@
-// Ejemplo: Manejo del audio desde JavaScript
+/ Referencia al elemento de audio
 const audio = document.getElementById("background-audio");
 
-// Puedes pausar el audio manualmente si lo necesitas
-console.log("Audio cargado y listo para reproducirse.");
+// Referencia al botón de reproducción
+const playButton = document.getElementById("play-button");
+
+// Evento para iniciar la música al hacer clic
+playButton.addEventListener("click", () => {
+  audio.play();
+  playButton.style.display = "none"; // Oculta el botón después de iniciar la música
+});
