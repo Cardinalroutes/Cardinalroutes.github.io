@@ -1,11 +1,10 @@
-/ Referencia al elemento de audio
+// Referencia al elemento de audio
 const audio = document.getElementById("background-audio");
 
-// Referencia al botón de reproducción
-const playButton = document.getElementById("play-button");
+// Referencia al logo que actúa como botón
+const logoButton = document.getElementById("logo-button");
 
-// Evento para iniciar la música al hacer clic
-playButton.addEventListener("click", () => {
+// Evento para iniciar la música al hacer clic en el logo
+logoButton.addEventListener("click", () => {
   audio.play();
-  playButton.style.display = "none"; // Oculta el botón después de iniciar la música
 });
