@@ -1,0 +1,64 @@
+/* Estilo general */
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+}
+
+/* Video de fondo */
+video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Contenido */
+.content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  width: 90%;
+  max-width: 400px;
+}
+
+/* Logo */
+.logo img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Botones con logos */
+.buttons a {
+  display: inline-block;
+  margin: 15px; /* Más espacio entre los botones */
+  width: 100px; /* Botón más grande */
+  height: 100px; /* Botón más grande */
+  border-radius: 50%;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.buttons a img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 50%;
+}
+
+/* Efectos hover */
+.instagram-button:hover {
+  transform: scale(1.1);
+  background-color: #E4405F; /* Color oficial de Instagram */
+  box-shadow: 0 0 15px #E4405F;
+}
+
+.whatsapp-button:hover {
+  transform: scale(1.1);
+  background-color: #25D366; /* Color oficial de WhatsApp */
+  box-shadow: 0 0 15px #25D366;
