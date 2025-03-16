@@ -1,10 +1,11 @@
-/* Estilo general */
+/* Estilos generales */
 body {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  font-family: Arial, sans-serif;
+  font-family: 'Roboto', sans-serif;
   color: white;
+  background-color: #000; /* Fondo de respaldo para el video */
 }
 
 /* Video de fondo */
@@ -15,9 +16,10 @@ video {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  z-index: -1;
 }
 
-/* Contenido */
+/* Contenido principal */
 .content {
   position: absolute;
   top: 50%;
@@ -28,72 +30,144 @@ video {
   max-width: 400px;
 }
 
-/* Mensaje */
+/* Mensaje de bienvenida */
 .message p {
-  font-size: 18px;
+  font-size: 1.5rem;
   margin-bottom: 20px;
   font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-/* Logo como botón */
+/* Logo interactivo */
 .logo img {
   cursor: pointer;
-  width: 150px; /* Ajusta el tamaño del logo */
+  width: 150px;
   height: auto;
-  transition: transform 0.3s;
+  transition: transform 0.3s ease, filter 0.3s ease;
 }
 
 .logo img:hover {
   transform: scale(1.1);
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.7));
 }
 
-/* Botones con logos */
+/* Botones de redes sociales */
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 40px; /* Más espacio entre botones */
+  margin-top: 30px; /* Más espacio arriba */
+}
+
 .buttons a {
   display: inline-block;
-  margin: 15px;
-  width: 100px;
-  height: 100px;
+  width: 90px; /* Tamaño del botón */
+  height: 90px;
   border-radius: 50%;
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-color: rgba(255, 255, 255, 0.1); /* Fondo semi-transparente */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none; /* Eliminar subrayado */
+  border: none; /* Eliminar bordes */
 }
 
 .buttons a img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  border-radius: 50%;
+  width: 60px; /* Tamaño del ícono aumentado */
+  height: 60px;
+  transition: transform 0.3s ease;
 }
 
 /* Efectos hover para Instagram */
 .instagram-button:hover {
   transform: scale(1.1);
-  background-color: #E4405F;
-  box-shadow: 0 0 15px #E4405F;
+  box-shadow: 0 0 20px rgba(228, 64, 95, 0.8); /* Sombra más pronunciada */
+  background-color: rgba(228, 64, 95, 0.2); /* Fondo con color de Instagram */
+}
+
+.instagram-button:hover img {
+  transform: scale(1.1); /* Efecto de escala en el ícono */
 }
 
 /* Efectos hover para WhatsApp */
 .whatsapp-button:hover {
   transform: scale(1.1);
-  background-color: #25D366;
-  box-shadow: 0 0 15px #25D366;
-}
-/* Botón Entrar */
-.enter {
-  margin-top: 30px;
+  box-shadow: 0 0 20px rgba(37, 211, 102, 0.8); /* Sombra más pronunciada */
+  background-color: rgba(37, 211, 102, 0.2); /* Fondo con color de WhatsApp */
 }
 
+.whatsapp-button:hover img {
+  transform: scale(1.1); /* Efecto de escala en el ícono */
+}
+
+/* Efecto de rebote al hacer clic */
+.buttons a:active {
+  transform: scale(0.9);
+}
+
+/* Botón Entrar */
 .enter-button {
   display: inline-block;
-  background-color: #4CAF50;
+  background-color: #B22222;
   color: white;
   text-decoration: none;
-  padding: 15px 30px;
-  font-size: 18px;
+  padding: 12px 24px;
+  font-size: 1rem;
   border-radius: 25px;
-  transition: background 0.3s, transform 0.3s;
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .enter-button:hover {
-  background-color: #45a049;
-  transform: scale(1.1);
+  background-color: #8B0000;
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Botón de reproducción */
+#play-button {
+  display: none;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: #B22222;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#play-button:hover {
+  background-color: #8B0000;
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  .message p {
+    font-size: 1.2rem;
+  }
+
+  .logo img {
+    width: 120px;
+  }
+
+  .buttons a {
+    width: 80px; /* Tamaño reducido en móviles */
+    height: 80px;
+  }
+
+  .buttons a img {
+    width: 50px; /* Tamaño del ícono reducido en móviles */
+    height: 50px;
+  }
+
+  .enter-button {
+    font-size: 0.9rem;
+    padding: 10px 20px;
+  }
 }
