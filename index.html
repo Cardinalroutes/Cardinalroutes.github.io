@@ -6,38 +6,54 @@
   <meta name="description" content="Cardinal Routes - Empresa de turismo en Barquisimeto y Maracay, ofreciendo viajes y experiencias únicas para crear grandes recuerdos.">
   <meta name="keywords" content="Cardinal Routes, turismo Barquisimeto, turismo Maracay, viajes únicos, experiencias inolvidables">
   <meta name="author" content="Cardinal Routes">
-  <title>Cardinal Routes</title>
+  <title>Cardinal Routes - Inicio</title>
   <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <video autoplay loop muted>
+  <!-- Video de fondo -->
+  <video autoplay loop muted aria-label="Video de fondo con paisajes turísticos">
     <source src="tu-video.mp4" type="video/mp4">
     Tu navegador no soporta videos.
   </video>
-  <div class="content">
-    <div class="message">
+
+  <!-- Contenido principal -->
+  <main class="content">
+    <!-- Mensaje de bienvenida -->
+    <div class="message" aria-label="Mensaje de bienvenida">
       <p>Para comenzar la aventura, presiona el cardenal</p>
     </div>
+
+    <!-- Logo interactivo -->
     <div class="logo">
-      <img src="logo.png" alt="Logo Empresa" id="logo-button">
+      <img src="logo.png" alt="Logo de Cardinal Routes" id="logo-button" role="button" aria-label="Presiona para comenzar">
     </div>
-    <div class="buttons">
-      <a href="https://www.instagram.com/cardinalroutes" target="_blank" class="instagram-button">
+
+    <!-- Botones de redes sociales -->
+    <div class="buttons" aria-label="Redes sociales">
+      <a href="https://www.instagram.com/cardinalroutes" target="_blank" class="instagram-button" aria-label="Instagram">
         <img src="instagram-logo.png" alt="Instagram">
       </a>
-      <a href="https://wa.link/ailag8" target="_blank" class="whatsapp-button">
+      <a href="https://wa.link/ailag8" target="_blank" class="whatsapp-button" aria-label="WhatsApp">
         <img src="whatsapp-logo.png" alt="WhatsApp">
       </a>
     </div>
+
     <!-- Botón Entrar -->
     <div class="enter">
-      <a href="main.html" class="enter-button">Entrar</a>
+      <a href="main.html" class="enter-button" aria-label="Entrar a la página principal">Entrar</a>
     </div>
-  </div>
-  <audio id="background-audio" loop>
+  </main>
+
+  <!-- Audio de fondo -->
+  <audio id="background-audio" loop aria-label="Audio de fondo relajante">
     <source src="tu-cancion.mp3" type="audio/mpeg">
     Tu navegador no soporta audio.
   </audio>
+
+  <!-- Botón de reproducción -->
+  <button id="play-button">Reproducir música</button>
+
   <script src="script.js"></script>
 </body>
 </html>
