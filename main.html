@@ -13,14 +13,16 @@
 <body>
   <!-- Hero Section -->
   <section class="hero">
-    <video autoplay loop muted>
-      <source src="hero-video.mp4" type="video/mp4">
-      Tu navegador no soporta videos.
-    </video>
-    <div class="hero-content">
-      <h1>Explora Barquisimeto y Maracay con Cardinal Routes</h1>
-      <a href="#sobre-nosotros" class="cta-button">Comenzar la aventura</a>
-    </div>
+  <video id="background-video" autoplay loop muted>
+  <!-- La primera parte se carga inicialmente -->
+  <source src="video-part-1.mp4" type="video/mp4">
+  Tu navegador no soporta videos.
+</video>
+
+<audio id="background-audio">
+  <source src="background-music.mp3" type="audio/mpeg">
+  Tu navegador no soporta audio.
+</audio>
   </section>
 
   <!-- Sobre Nosotros -->
