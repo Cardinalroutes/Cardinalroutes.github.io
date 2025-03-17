@@ -40,8 +40,8 @@ const audioElement = document.getElementById("background-audio");
 let currentPart = 0;
 
 // Tiempo de inicio y fin del bucle de la canción (en segundos)
-const loopStart = 10; // Punto A (10 segundos)
-const loopEnd = 30;   // Punto B (30 segundos)
+const loopStart = 25; // Punto A (10 segundos)
+const loopEnd = 79;   // Punto B (30 segundos)
 
 // Función para cargar la siguiente parte del video
 function loadNextVideoPart() {
