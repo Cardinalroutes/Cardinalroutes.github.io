@@ -40,23 +40,14 @@ const audioElement = document.getElementById("background-audio");
 let currentPart = 0;
 
 // Tiempo de inicio y fin del bucle de la canción (en segundos)
-const loopStart = 25; // Punto A (10 segundos)
-const loopEnd = 79;   // Punto B (30 segundos)
+const loopStart = 10; // Punto A (10 segundos)
+const loopEnd = 79;   // Punto B (1:19 en segundos)
 
 // Función para cargar la siguiente parte del video
 function loadNextVideoPart() {
-  currentPart = (currentPart + 1) % videoSources.length;
-
-  // Aplicar fundido antes de cambiar el video
-  videoElement.style.opacity = 0;
-
-  setTimeout(() => {
-    videoElement.src = videoSources[currentPart];
-    videoElement.play().catch(function(error) {
-      console.log('El navegador ha bloqueado la reproducción automática del video.');
-    });
-    videoElement.style.opacity = 1; // Restaurar opacidad
-  }, 1000); // Duración del fundido (1 segundo)
+  currentPart = (currentPart + 1) % videoSources.length; // Avanza al siguiente video (o vuelve al primero)
+  videoElement.src = videoSources[currentPart]; // Cambia la fuente del video
+  videoElement.play(); // Reproduce el video
 }
 
 // Función para manejar el bucle de la canción
@@ -72,14 +63,16 @@ videoElement.addEventListener("ended", loadNextVideoPart);
 // Evento que se dispara mientras el audio se reproduce
 audioElement.addEventListener("timeupdate", loopAudio);
 
+// Evento para manejar errores en la carga del video
+videoElement.addEventListener("error", () => {
+  console.error("Error al cargar el video. Intentando cargar la siguiente parte.");
+  loadNextVideoPart(); // Intenta cargar la siguiente parte si hay un error
+});
+
 // Cargar la primera parte del video al iniciar
 videoElement.src = videoSources[currentPart];
-videoElement.play().catch(function(error) {
-  console.log('El navegador ha bloqueado la reproducción automática del video.');
-});
+videoElement.play();
 
 // Reproducir la canción de fondo
 audioElement.currentTime = loopStart; // Comienza desde el punto A
-audioElement.play().catch(function(error) {
-  console.log('El navegador ha bloqueado la reproducción automática del audio.');
-});
+audioElement.play();
