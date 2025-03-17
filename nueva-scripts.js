@@ -52,10 +52,13 @@ function loadNextVideoPart() {
 
   setTimeout(() => {
     videoElement.src = videoSources[currentPart];
-    videoElement.play();
+    videoElement.play().catch(function(error) {
+      console.log('El navegador ha bloqueado la reproducción automática del video.');
+    });
     videoElement.style.opacity = 1; // Restaurar opacidad
   }, 1000); // Duración del fundido (1 segundo)
 }
+
 // Función para manejar el bucle de la canción
 function loopAudio() {
   if (audioElement.currentTime >= loopEnd) {
@@ -71,9 +74,12 @@ audioElement.addEventListener("timeupdate", loopAudio);
 
 // Cargar la primera parte del video al iniciar
 videoElement.src = videoSources[currentPart];
-videoElement.play();
+videoElement.play().catch(function(error) {
+  console.log('El navegador ha bloqueado la reproducción automática del video.');
+});
 
 // Reproducir la canción de fondo
 audioElement.currentTime = loopStart; // Comienza desde el punto A
-audioElement.play();
-}
+audioElement.play().catch(function(error) {
+  console.log('El navegador ha bloqueado la reproducción automática del audio.');
+});
