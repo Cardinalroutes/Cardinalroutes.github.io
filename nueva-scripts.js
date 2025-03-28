@@ -33,17 +33,17 @@ const tourAvailability = {
     lastUpdated: new Date().toISOString().split('T')[0]
   },
   "la-grieta": {
-    total: 20,
+    total: 30,
     booked: 0,
     lastUpdated: new Date().toISOString().split('T')[0]
-  }
+  },
   "patanemo": {
-    total: 20,
+    total: 30,
     booked: 2,
     lastUpdated: new Date().toISOString().split('T')[0]
-  }
+  },
 "choroni": {
-    total: 20,
+    total: 30,
     booked: 0,
     lastUpdated: new Date().toISOString().split('T')[0]
   }
