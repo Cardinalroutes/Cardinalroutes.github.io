@@ -1,0 +1,319 @@
+/* Estilos generales */
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  color: #333;
+  background-color: #f8f9fa;
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  overflow: hidden;
+}
+
+.hero-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  padding: 0 20px;
+}
+
+.hero h1 {
+  font-size: 3.5rem;
+  font-family: 'Barlow Condensed', sans-serif;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+  margin-bottom: 1.5rem;
+}
+
+.cta-button {
+  display: inline-block;
+  background: linear-gradient(to right, #E67E22, #D35400);
+  color: white;
+  padding: 15px 40px;
+  font-size: 1.2rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: bold;
+  box-shadow: 0 4px 15px rgba(230, 126, 34, 0.4);
+  transition: all 0.3s;
+}
+
+.cta-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(230, 126, 34, 0.6);
+}
+
+/* Selector de Aventuras */
+.adventure-board {
+  padding: 5rem 2rem;
+  background-color: #f8f9fa;
+}
+
+.adventure-board h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #2c3e50;
+  margin-bottom: 3rem;
+  font-family: 'Barlow Condensed', sans-serif;
+}
+
+.adventure-filters {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  background: white;
+  border: 2px solid #2980B9;
+  color: #2980B9;
+  padding: 0.8rem 1.8rem;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s;
+  font-family: 'Barlow Condensed', sans-serif;
+}
+
+.filter-btn.active, .filter-btn:hover {
+  background: #2980B9;
+  color: white;
+}
+
+.adventure-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.adventure-card {
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s;
+}
+
+.adventure-card:hover {
+  transform: translateY(-10px);
+}
+
+.card-header {
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.price, .date {
+  background: rgba(0,0,0,0.7);
+  color: white;
+  padding: 0.3rem 1rem;
+  border-radius: 20px;
+  position: absolute;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.price {
+  top: 1rem;
+  left: 1rem;
+  background: #E67E22;
+}
+
+.date {
+  bottom: 1rem;
+  right: 1rem;
+}
+
+.card-body {
+  padding: 1.5rem;
+}
+
+.card-body h3 {
+  margin: 0 0 1rem 0;
+  color: #2c3e50;
+  font-size: 1.5rem;
+}
+
+.highlights {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+
+.highlights span {
+  background: #f0f8ff;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  color: #2980B9;
+}
+
+/* Contador de Cupos */
+.availability {
+  margin: 1.5rem 0;
+}
+
+.seats-counter {
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+}
+
+.seats {
+  color: #E67E22;
+  font-size: 1.2rem;
+}
+
+.seats[data-low="true"] {
+  color: #e74c3c;
+}
+
+.progress-bar {
+  height: 8px;
+  background: #f0f0f0;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(to right, #25D366, #2ECC71);
+  transition: width 0.5s ease;
+}
+
+/* Botón WhatsApp */
+.whatsapp-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: #25D366;
+  color: white;
+  padding: 12px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s;
+  margin-top: 10px;
+}
+
+.whatsapp-btn:hover {
+  background: #128C7E;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.whatsapp-btn img {
+  width: 20px;
+  height: 20px;
+}
+
+/* Testimonios Instagram */
+.instagram-testimonials {
+  padding: 4rem 2rem;
+  background: linear-gradient(to bottom, #f8f9fa, #e9f5ff);
+  text-align: center;
+}
+
+.instagram-testimonials h2 {
+  font-size: 2.2rem;
+  color: #2c3e50;
+  margin-bottom: 1.5rem;
+  font-family: 'Barlow Condensed', sans-serif;
+}
+
+.insta-handle {
+  color: #E67E22;
+}
+
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 2rem auto;
+}
+
+.instagram-media {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  overflow: hidden;
+  min-width: 300px;
+  margin: 0 auto;
+}
+
+.cta-instagram {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(45deg, #405DE6, #833AB4);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: bold;
+  margin-top: 2rem;
+  transition: transform 0.3s;
+}
+
+.cta-instagram:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(131, 58, 180, 0.3);
+}
+
+.cta-instagram img {
+  width: 20px;
+  height: 20px;
+}
+
+.instagram-media {
+  min-height: 500px; /* Ajusta según necesidad */
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+  
+  .adventure-grid {
+    grid-template-columns: 1fr;
+  }
+}
+/* Transición para videos */
+.hero-video {
+  transition: opacity 0.8s ease-in-out;
+}
+
+/* Asegurar contraste para texto */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+}

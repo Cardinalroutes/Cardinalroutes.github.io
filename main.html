@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cardinal Routes - Aventuras en Venezuela</title>
+  <link rel="stylesheet" href="nueva-styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Hero Section (conserva todo lo existente) -->
+<section class="hero">
+  <!-- Video Principal (se auto-rotará) -->
+  <video id="bg-video" autoplay muted loop playsinline class="hero-video">
+    <source src="video/video-part-1.mp4" type="video/mp4">
+  </video>
+  
+  <div class="hero-content">
+    <h1>Explora Barquisimeto y Maracay con Cardinal Routes</h1>
+    <a href="#aventuras" class="cta-button">Comenzar la aventura</a>
+  </div>
+</section>
+
+  <!-- Selector de Aventuras -->
+  <section id="aventuras" class="adventure-board">
+    <h2>Elige tu Próxima Expedición</h2>
+    
+    <div class="adventure-filters">
+      <button class="filter-btn active" data-filter="all">Todas</button>
+      <button class="filter-btn" data-filter="playa">Playas</button>
+      <button class="filter-btn" data-filter="montaña">Montaña</button>
+    </div>
+
+    <div class="adventure-grid">
+      <!-- Tour Cayo Sombrero -->
+      <div class="adventure-card" data-category="playa">
+        <div class="card-header" style="background-image: url('img/cayo-sombrero.jpg');">
+          <span class="price">$27/pers</span>
+          <span class="date">20 Abr</span>
+        </div>
+        <div class="card-body">
+          <h3>Cayo Sombrero + Los Juanes</h3>
+          <div class="highlights">
+            <span>🚤 Paseo en lancha</span>
+            <span>📸 Fotos profesionales</span>
+            <span>🏖️ Balones playa</span>
+          </div>
+          <div class="availability">
+            <div class="seats-counter">
+              <span class="seats">12</span>/30 cupos
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 40%"></div>
+            </div>
+          </div>
+          <a href="https://wa.me/584145063757?text=¡Reservar%20Cayo%20Sombrero%20para%2020/04!%20Confirmo%20pago%20de%20seña%20de%20$7." 
+             class="whatsapp-btn" 
+             target="_blank">
+             <img src="img/whatsapp-icon.svg" alt="WhatsApp"> Reservar Ahora
+          </a>
+        </div>
+      </div>
+
+      <!-- Tour La Grieta -->
+      <div class="adventure-card" data-category="montaña">
+        <div class="card-header" style="background-image: url('img/la-grieta.jpg');">
+          <span class="price">$28/pers</span>
+          <span class="date">12 Abr</span>
+        </div>
+        <div class="card-body">
+          <h3>La Grieta - Full Day</h3>
+          <div class="highlights">
+            <span>🧗‍♂️ Guía baquiano</span>
+            <span>🪢 Cuerdas de apoyo</span>
+            <span>🚑 Protección Civil</span>
+          </div>
+          <div class="availability">
+            <div class="seats-counter">
+              <span class="seats">15</span>/20 cupos
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 25%"></div>
+            </div>
+          </div>
+          <a href="https://wa.me/584145063757?text=¡Reservar%20La%20Grieta%20Full%20Day%20para%2012/04!%20Confirmo%20pago%20completo%20de%20$28." 
+             class="whatsapp-btn" 
+             target="_blank">
+             <img src="img/whatsapp-icon.svg" alt="WhatsApp"> Reservar Ahora
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="instagram-testimonials">
+    <h2>Nuestros Viajeros en Acción <span class="insta-handle">@cardinalroutes</span></h2>
+    
+    <div class="testimonial-grid">
+      <!-- Testimonio 1 - Embed de Instagram -->
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DHV7QKGJBhp/?igsh=QkFEVGxCOU01cg%3D%3D" data-instgrm-version="14"></blockquote>
+      
+      <!-- Testimonio 2 -->
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DHd54PmOGBq/?igsh=QkJYQkJ1Mkloeg%3D%3D" data-instgrm-version="14"></blockquote>
+      
+      <!-- Testimonio 3 -->
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DHjfl_Cpogk/?igsh=X21XVVNDRXJ0" data-instgrm-version="14"></blockquote>
+    </div>
+    
+    <a href="https://www.instagram.com/cardinalroutes" target="_blank" class="cta-instagram">
+      <img src="img/instagram-icon.svg" alt="Instagram"> Más testimonios
+    </a>
+  </section>
+
+  <script src="nueva-scripts.js"></script>
+</body>
+</html>
