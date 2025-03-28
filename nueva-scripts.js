@@ -29,12 +29,22 @@ function filterAdventures(filter) {
 const tourAvailability = {
   "cayo-sombrero": {
     total: 30,
-    booked: 30,
+    booked: 16,
     lastUpdated: new Date().toISOString().split('T')[0]
   },
   "la-grieta": {
     total: 20,
-    booked: 19,
+    booked: 0,
+    lastUpdated: new Date().toISOString().split('T')[0]
+  }
+  "patanemo": {
+    total: 20,
+    booked: 2,
+    lastUpdated: new Date().toISOString().split('T')[0]
+  }
+"choroni": {
+    total: 20,
+    booked: 0,
     lastUpdated: new Date().toISOString().split('T')[0]
   }
 };
