@@ -1,24 +1,4 @@
-// Filtrado de Tours (este está correcto)
-document.querySelectorAll('.filter-btn').forEach(button => {
-  button.addEventListener('click', () => {
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-      btn.classList.remove('active');
-    });
-    button.classList.add('active');
-    
-    const filter = button.dataset.filter;
-    filterAdventures(filter);
-  });
-});
-
-function filterAdventures(filter) {
-  const cards = document.querySelectorAll('.adventure-card');
-  cards.forEach(card => {
-    card.style.display = (filter === 'all' || card.dataset.category === filter) ? 'block' : 'none';
-  });
-}
-
-// Datos de disponibilidad actualizados
+// Datos de disponibilidad (actualiza estos valores)
 const tourAvailability = {
   "cayo-sombrero": {
     total: 30,
@@ -30,7 +10,7 @@ const tourAvailability = {
     booked: 0,
     lastUpdated: new Date().toISOString().split('T')[0]
   },
-  "tour-patanemo": {  // Cambiado a minúsculas y sin espacio
+  "tour-patanemo": {
     total: 30,
     booked: 2,
     lastUpdated: new Date().toISOString().split('T')[0]
@@ -42,31 +22,24 @@ const tourAvailability = {
   }
 };
 
-// Función mejorada para actualizar contadores
+// Actualizar contadores y barras de progreso
 function updateSeatsCounters() {
   document.querySelectorAll('.adventure-card').forEach(card => {
-    const tourTitle = card.querySelector('h3').textContent.toLowerCase();
-    let tourId;
-    
-    // Mapeo completo de todos los tours
-    if (tourTitle.includes('cayo')) tourId = "cayo-sombrero";
-    else if (tourTitle.includes('grieta')) tourId = "la-grieta";
-    else if (tourTitle.includes('patanemo')) tourId = "tour-patanemo";
-    else if (tourTitle.includes('choroni')) tourId = "choroni";
+    const tourId = card.dataset.tour;
     
     if (tourAvailability[tourId]) {
       const { total, booked } = tourAvailability[tourId];
       const available = total - booked;
-      const percentage = Math.min(100, (booked / total) * 100); // Asegura no pasar de 100%
+      const percentage = Math.min(100, (booked / total) * 100); // No más de 100%
       
       // Actualizar contador numérico
       const seatsElement = card.querySelector('.seats');
       if (seatsElement) {
         seatsElement.textContent = available;
-        seatsElement.style.color = available <= 5 ? '#e74c3c' : ''; // Rojo si quedan pocos
+        seatsElement.classList.toggle('low-availability', available <= 5);
       }
       
-      // Actualizar barra de progreso con validación
+      // Actualizar barra de progreso
       const progressFill = card.querySelector('.progress-fill');
       if (progressFill) {
         progressFill.style.width = `${percentage}%`;
@@ -75,55 +48,79 @@ function updateSeatsCounters() {
   });
 }
 
-// Inicialización
-document.addEventListener('DOMContentLoaded', () => {
-  updateSeatsCounters();
-  setInterval(updateSeatsCounters, 1800000); // Actualizar cada 30 minutos
+// Filtrado de tours
+document.querySelectorAll('.filter-btn').forEach(button => {
+  button.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+    button.classList.add('active');
+    
+    const filter = button.dataset.filter;
+    document.querySelectorAll('.adventure-card').forEach(card => {
+      card.style.display = (filter === 'all' || card.dataset.category === filter) ? 'block' : 'none';
+    });
+  });
+});
+
+// Sistema de videos de fondo
+const videoSources = [
+  "video/video-part-1.mp4",
+  "video/video-part-2.mp4",
+  "video/video-part-3.mp4",
+  "video/video-part-4.mp4"
+];
+
+function setupVideoRotation() {
+  const videoElement = document.getElementById("bg-video");
+  if (!videoElement || videoSources.length === 0) return;
+
+  let currentVideoIndex = 0;
+
+  function loadNextVideo() {
+    currentVideoIndex = (currentVideoIndex + 1) % videoSources.length;
+    videoElement.style.opacity = 0;
+    
+    setTimeout(() => {
+      videoElement.src = videoSources[currentVideoIndex];
+      videoElement.play()
+        .then(() => videoElement.style.opacity = 1)
+        .catch(e => console.error("Error al reproducir video:", e));
+    }, 500);
+  }
+
+  videoElement.addEventListener("ended", loadNextVideo);
   
-  // Efecto Pulse para CTA
+  // Precargar siguiente video
+  const nextVideo = document.createElement("video");
+  nextVideo.src = videoSources[1];
+  nextVideo.preload = "auto";
+}
+
+// Efecto de pulso para CTA
+function setupPulseEffect() {
   const pulseButton = document.querySelector('.pulse');
   if (pulseButton) {
     setInterval(() => {
       pulseButton.style.transform = pulseButton.style.transform === 'scale(1.05)' ? 'scale(1)' : 'scale(1.05)';
     }, 1000);
   }
+}
 
-  // Cargar Instagram si existe
+// Cargar widgets de Instagram
+function loadInstagramWidgets() {
   if (document.querySelector('.instagram-media')) {
     const script = document.createElement('script');
     script.src = 'https://www.instagram.com/embed.js';
     script.async = true;
     document.body.appendChild(script);
   }
+}
 
-  // Precargar siguiente video
-  const videoSources = [
-    "video/video-part-1.mp4",
-    "video/video-part-2.mp4",
-    "video/video-part-3.mp4",
-    "video/video-part-4.mp4"
-  ];
+// Inicialización completa
+document.addEventListener('DOMContentLoaded', () => {
+  updateSeatsCounters();
+  setInterval(updateSeatsCounters, 1800000); // Actualizar cada 30 minutos
   
-  const videoElement = document.getElementById("bg-video");
-  if (videoElement) {
-    let currentVideoIndex = 0;
-    
-    function loadNextVideo() {
-      currentVideoIndex = (currentVideoIndex + 1) % videoSources.length;
-      videoElement.style.opacity = 0;
-      setTimeout(() => {
-        videoElement.src = videoSources[currentVideoIndex];
-        videoElement.play();
-        videoElement.style.opacity = 1;
-      }, 500);
-    }
-    
-    videoElement.addEventListener("ended", loadNextVideo);
-    
-    // Precargar el siguiente video
-    const nextIndex = (currentVideoIndex + 1) % videoSources.length;
-    const tempVideo = document.createElement("video");
-    tempVideo.src = videoSources[nextIndex];
-    tempVideo.load();
-  }
+  setupVideoRotation();
+  setupPulseEffect();
+  loadInstagramWidgets();
 });
