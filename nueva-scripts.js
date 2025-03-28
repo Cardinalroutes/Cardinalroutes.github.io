@@ -2,7 +2,7 @@
 const tourAvailability = {
   "cayo-sombrero": {
     total: 30,
-    booked: 16,
+    booked: 0,
     lastUpdated: new Date().toISOString().split('T')[0]
   },
   "la-grieta": {
@@ -17,7 +17,7 @@ const tourAvailability = {
   },
   "choroni": {
     total: 30,
-    booked: 0,
+    booked: 16,
     lastUpdated: new Date().toISOString().split('T')[0]
   }
 };
