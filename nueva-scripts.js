@@ -37,7 +37,7 @@ const tourAvailability = {
     booked: 0,
     lastUpdated: new Date().toISOString().split('T')[0]
   },
-  "patanemo": {
+  "Tour patanemo": {
     total: 30,
     booked: 2,
     lastUpdated: new Date().toISOString().split('T')[0]
