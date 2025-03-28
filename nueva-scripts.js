@@ -1,11 +1,9 @@
-// Filtrado de Tours
+// Filtrado de Tours (este está correcto)
 document.querySelectorAll('.filter-btn').forEach(button => {
   button.addEventListener('click', () => {
-    // Remover clase active de todos los botones
     document.querySelectorAll('.filter-btn').forEach(btn => {
       btn.classList.remove('active');
     });
-    // Añadir clase active al botón clickeado
     button.classList.add('active');
     
     const filter = button.dataset.filter;
@@ -15,17 +13,12 @@ document.querySelectorAll('.filter-btn').forEach(button => {
 
 function filterAdventures(filter) {
   const cards = document.querySelectorAll('.adventure-card');
-  
   cards.forEach(card => {
-    if (filter === 'all' || card.dataset.category === filter) {
-      card.style.display = 'block';
-    } else {
-      card.style.display = 'none';
-    }
+    card.style.display = (filter === 'all' || card.dataset.category === filter) ? 'block' : 'none';
   });
 }
 
-// Contador de Cupos
+// Datos de disponibilidad actualizados
 const tourAvailability = {
   "cayo-sombrero": {
     total: 30,
@@ -37,117 +30,100 @@ const tourAvailability = {
     booked: 0,
     lastUpdated: new Date().toISOString().split('T')[0]
   },
-  "Tour patanemo": {
+  "tour-patanemo": {  // Cambiado a minúsculas y sin espacio
     total: 30,
     booked: 2,
     lastUpdated: new Date().toISOString().split('T')[0]
   },
-"choroni": {
+  "choroni": {
     total: 30,
     booked: 0,
     lastUpdated: new Date().toISOString().split('T')[0]
   }
 };
 
+// Función mejorada para actualizar contadores
 function updateSeatsCounters() {
   document.querySelectorAll('.adventure-card').forEach(card => {
     const tourTitle = card.querySelector('h3').textContent.toLowerCase();
     let tourId;
     
+    // Mapeo completo de todos los tours
     if (tourTitle.includes('cayo')) tourId = "cayo-sombrero";
     else if (tourTitle.includes('grieta')) tourId = "la-grieta";
+    else if (tourTitle.includes('patanemo')) tourId = "tour-patanemo";
+    else if (tourTitle.includes('choroni')) tourId = "choroni";
     
     if (tourAvailability[tourId]) {
       const { total, booked } = tourAvailability[tourId];
       const available = total - booked;
-      const percentage = (booked / total) * 100;
+      const percentage = Math.min(100, (booked / total) * 100); // Asegura no pasar de 100%
       
+      // Actualizar contador numérico
       const seatsElement = card.querySelector('.seats');
-      seatsElement.textContent = available;
-      
-      // Cambiar color si quedan pocos cupos
-      if (available <= 5) {
-        seatsElement.setAttribute('data-low', 'true');
-      } else {
-        seatsElement.removeAttribute('data-low');
+      if (seatsElement) {
+        seatsElement.textContent = available;
+        seatsElement.style.color = available <= 5 ? '#e74c3c' : ''; // Rojo si quedan pocos
       }
       
-      // Actualizar barra de progreso
-      card.querySelector('.progress-fill').style.width = `${percentage}%`;
+      // Actualizar barra de progreso con validación
+      const progressFill = card.querySelector('.progress-fill');
+      if (progressFill) {
+        progressFill.style.width = `${percentage}%`;
+      }
     }
   });
 }
 
-// Inicializar
+// Inicialización
 document.addEventListener('DOMContentLoaded', () => {
   updateSeatsCounters();
-  // Actualizar cada 30 minutos (opcional)
-  setInterval(updateSeatsCounters, 1800000);
-});
-
-// Efecto Pulse para CTA
-const pulseButton = document.querySelector('.pulse');
-if (pulseButton) {
-  setInterval(() => {
-    pulseButton.style.transform = 'scale(1.05)';
-    setTimeout(() => {
-      pulseButton.style.transform = 'scale(1)';
+  setInterval(updateSeatsCounters, 1800000); // Actualizar cada 30 minutos
+  
+  // Efecto Pulse para CTA
+  const pulseButton = document.querySelector('.pulse');
+  if (pulseButton) {
+    setInterval(() => {
+      pulseButton.style.transform = pulseButton.style.transform === 'scale(1.05)' ? 'scale(1)' : 'scale(1.05)';
     }, 1000);
-  }, 2000);
-}
+  }
 
-// Cargar widgets de Instagram
-function loadInstagram() {
-  const script = document.createElement('script');
-  script.src = 'https://www.instagram.com/embed.js';
-  script.async = true;
-  document.body.appendChild(script);
-}
+  // Cargar Instagram si existe
+  if (document.querySelector('.instagram-media')) {
+    const script = document.createElement('script');
+    script.src = 'https://www.instagram.com/embed.js';
+    script.async = true;
+    document.body.appendChild(script);
+  }
 
-// Cargar cuando la página esté lista
-if (document.querySelector('.instagram-media')) {
-  window.addEventListener('DOMContentLoaded', loadInstagram);
-}
-
-// En nueva-scripts.js
-const hashtag = "CardinalRoutesTestimonio";
-
-const videoSources = [
-  "video/video-part-1.mp4",
-  "video/video-part-2.mp4",
-  "video/video-part-3.mp4",
-  "video/video-part-4.mp4"
-];
-
-const videoElement = document.getElementById("bg-video");
-let currentVideoIndex = 0;
-
-// Función para cargar el siguiente video
-function loadNextVideo() {
-  currentVideoIndex = (currentVideoIndex + 1) % videoSources.length;
+  // Precargar siguiente video
+  const videoSources = [
+    "video/video-part-1.mp4",
+    "video/video-part-2.mp4",
+    "video/video-part-3.mp4",
+    "video/video-part-4.mp4"
+  ];
   
-  // Efecto de transición
-  videoElement.style.opacity = 0;
-  
-  setTimeout(() => {
-    videoElement.src = videoSources[currentVideoIndex];
-    videoElement.play();
-    videoElement.style.opacity = 1;
-  }, 500); // Duración del fade
-}
-
-// Cambiar video cuando termine el actual
-videoElement.addEventListener("ended", loadNextVideo);
-
-// Precargar el siguiente video
-function preloadNextVideo() {
-  const nextIndex = (currentVideoIndex + 1) % videoSources.length;
-  const tempVideo = document.createElement("video");
-  tempVideo.src = videoSources[nextIndex];
-  tempVideo.load();
-}
-
-// Iniciar
-document.addEventListener("DOMContentLoaded", () => {
-  preloadNextVideo();
+  const videoElement = document.getElementById("bg-video");
+  if (videoElement) {
+    let currentVideoIndex = 0;
+    
+    function loadNextVideo() {
+      currentVideoIndex = (currentVideoIndex + 1) % videoSources.length;
+      videoElement.style.opacity = 0;
+      setTimeout(() => {
+        videoElement.src = videoSources[currentVideoIndex];
+        videoElement.play();
+        videoElement.style.opacity = 1;
+      }, 500);
+    }
+    
+    videoElement.addEventListener("ended", loadNextVideo);
+    
+    // Precargar el siguiente video
+    const nextIndex = (currentVideoIndex + 1) % videoSources.length;
+    const tempVideo = document.createElement("video");
+    tempVideo.src = videoSources[nextIndex];
+    tempVideo.load();
+  }
 });
