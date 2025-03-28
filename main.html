@@ -6,20 +6,19 @@
   <title>Cardinal Routes - Aventuras en Venezuela</title>
   <link rel="stylesheet" href="nueva-styles.css">
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-  <!-- Hero Section (conserva todo lo existente) -->
-<section class="hero">
-  <!-- Video Principal (se auto-rotará) -->
-  <video id="bg-video" autoplay muted loop playsinline class="hero-video">
-    <source src="video/video-part-1.mp4" type="video/mp4">
-  </video>
-  
-  <div class="hero-content">
-    <h1>Explora Venezuela con Cardinal Routes</h1>
-    <a href="#aventuras" class="cta-button">Comenzar la aventura</a>
-  </div>
-</section>
+  <!-- Hero Section -->
+  <section class="hero">
+    <video id="bg-video" autoplay muted loop playsinline class="hero-video">
+      <source src="video/video-part-1.mp4" type="video/mp4">
+    </video>
+    <div class="hero-content">
+      <h1>Explora Venezuela con Cardinal Routes</h1>
+      <a href="#aventuras" class="cta-button pulse">Comenzar la aventura</a>
+    </div>
+  </section>
 
   <!-- Selector de Aventuras -->
   <section id="aventuras" class="adventure-board">
@@ -33,7 +32,7 @@
 
     <div class="adventure-grid">
       <!-- Tour Cayo Sombrero -->
-      <div class="adventure-card" data-category="playa">
+      <div class="adventure-card" data-category="playa" data-tour="cayo-sombrero">
         <div class="card-header" style="background-image: url('img/cayo-sombrero.jpg');">
           <span class="price">$27/pers</span>
           <span class="date">20 Abr</span>
@@ -50,25 +49,25 @@
               <span class="seats">12</span>/30 cupos
             </div>
             <div class="progress-bar">
-              <div class="progress-fill" style="width: 40%"></div>
+              <div class="progress-fill"></div>
             </div>
           </div>
           <a href="https://wa.me/584145063757?text=¡Reservar%20Cayo%20Sombrero%20para%2020/04!%20Confirmo%20pago%20de%20reserva%20de%20$7." 
              class="whatsapp-btn" 
              target="_blank">
-             <img src="img/whatsapp-icon.svg" alt="WhatsApp"> Reservar Ahora
+             <i class="fab fa-whatsapp"></i> Reservar Ahora
           </a>
         </div>
       </div>
 
- <!-- Tour patanemo -->
-      <div class="adventure-card" data-category="playa">
+      <!-- Tour Patanemo -->
+      <div class="adventure-card" data-category="playa" data-tour="tour-patanemo">
         <div class="card-header" style="background-image: url('img/patanemo.jpg');">
           <span class="price">$22/pers</span>
           <span class="date">27 Abr</span>
         </div>
         <div class="card-body">
-          <h3>Tour patanemo</h3>
+          <h3>Tour Patanemo</h3>
           <div class="highlights">
             <span>🚤 Paseo en lancha</span>
             <span>📸 Fotos profesionales</span>
@@ -79,19 +78,19 @@
               <span class="seats">12</span>/30 cupos
             </div>
             <div class="progress-bar">
-              <div class="progress-fill" style="width: 40%"></div>
+              <div class="progress-fill"></div>
             </div>
           </div>
           <a href="https://wa.me/584145063757?text=¡Reservar%20Tour%20Patanemo%20para%2027/04!%20Confirmo%20pago%20de%20reserva%20de%20$7." 
              class="whatsapp-btn" 
              target="_blank">
-             <img src="img/whatsapp-icon.svg" alt="WhatsApp"> Reservar Ahora
+             <i class="fab fa-whatsapp"></i> Reservar Ahora
           </a>
         </div>
       </div>
 
- <!-- Tour choroni -->
-      <div class="adventure-card" data-category="playa">
+      <!-- Tour Choroni -->
+      <div class="adventure-card" data-category="playa" data-tour="choroni">
         <div class="card-header" style="background-image: url('img/choroni.jpg');">
           <span class="price">$105/pers</span>
           <span class="date">18-19 y 20 Abr</span>
@@ -108,21 +107,19 @@
               <span class="seats">12</span>/30 cupos
             </div>
             <div class="progress-bar">
-              <div class="progress-fill" style="width: 40%"></div>
+              <div class="progress-fill"></div>
             </div>
           </div>
           <a href="https://wa.me/584145063757?text=¡Reservar%20Choroni%20para%2018-19%20y%2020/04!%20Confirmo%20pago%20de%20reserva%20de%20$35." 
              class="whatsapp-btn" 
              target="_blank">
-             <img src="img/whatsapp-icon.svg" alt="WhatsApp"> Reservar Ahora
+             <i class="fab fa-whatsapp"></i> Reservar Ahora
           </a>
         </div>
       </div>
 
-      
-      
       <!-- Tour La Grieta -->
-      <div class="adventure-card" data-category="montaña">
+      <div class="adventure-card" data-category="montaña" data-tour="la-grieta">
         <div class="card-header" style="background-image: url('img/la-grieta.jpg');">
           <span class="price">$28/pers</span>
           <span class="date">12 Abr</span>
@@ -139,35 +136,31 @@
               <span class="seats">15</span>/30 cupos
             </div>
             <div class="progress-bar">
-              <div class="progress-fill" style="width: 25%"></div>
+              <div class="progress-fill"></div>
             </div>
           </div>
-          <a href="https://wa.me/584145063757?text=¡Reservar%20La%20Grieta%20para%2012/04!%20Confirmo%20pago%20de%20resera%20de%20$8." 
+          <a href="https://wa.me/584145063757?text=¡Reservar%20La%20Grieta%20para%2012/04!%20Confirmo%20pago%20de%20reserva%20de%20$8." 
              class="whatsapp-btn" 
              target="_blank">
-             <img src="img/whatsapp-icon.svg" alt="WhatsApp"> Reservar Ahora
+             <i class="fab fa-whatsapp"></i> Reservar Ahora
           </a>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- Testimonios Instagram -->
   <section class="instagram-testimonials">
     <h2>Nuestros Viajeros en Acción <span class="insta-handle">@cardinalroutes</span></h2>
     
     <div class="testimonial-grid">
-      <!-- Testimonio 1 - Embed de Instagram -->
-      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DHV7QKGJBhp/?igsh=QkFEVGxCOU01cg%3D%3D" data-instgrm-version="14"></blockquote>
-      
-      <!-- Testimonio 2 -->
-      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DHd54PmOGBq/?igsh=QkJYQkJ1Mkloeg%3D%3D" data-instgrm-version="14"></blockquote>
-      
-      <!-- Testimonio 3 -->
-      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DHjfl_Cpogk/?igsh=X21XVVNDRXJ0" data-instgrm-version="14"></blockquote>
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DHV7QKGJBhp/" data-instgrm-version="14"></blockquote>
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DHd54PmOGBq/" data-instgrm-version="14"></blockquote>
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DHjfl_Cpogk/" data-instgrm-version="14"></blockquote>
     </div>
     
     <a href="https://www.instagram.com/cardinalroutes" target="_blank" class="cta-instagram">
-      <img src="img/instagram-icon.svg" alt="Instagram"> Más testimonios
+      <i class="fab fa-instagram"></i> Más testimonios
     </a>
   </section>
 
