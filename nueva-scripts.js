@@ -17,7 +17,7 @@ const tourAvailability = {
   },
   "choroni": {
     total: 30,
-    booked: 18,
+    booked: 24,
     lastUpdated: new Date().toISOString().split('T')[0]
   }
 };
